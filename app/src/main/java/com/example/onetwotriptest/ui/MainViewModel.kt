@@ -9,6 +9,7 @@ import com.example.onetwotriptest.model.Flight
 import com.example.onetwotriptest.repositories.FlightRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -16,12 +17,13 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val repository: FlightRepository) : ViewModel() {
 
 
-    private val _flightList = MutableLiveData<List<Flight>>()
-    val flightList: LiveData<List<Flight>> = _flightList
+    private val _flightList = MutableLiveData<Response<List<Flight>>>()
+    val flightList: LiveData<Response<List<Flight>>> = _flightList
 
     fun getFlightList() {
         viewModelScope.launch {
-            _flightList.value = repository.getCountries().body()
+            val response = repository.getCountries()
+            _flightList.value = response
         }
     }
 }
