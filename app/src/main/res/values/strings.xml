@@ -2,4 +2,10 @@
     <string name="app_name">OneTwoTripTest</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <plurals name="transers">
+        <item quantity="one">%d пересадка</item>
+        <item quantity="other">%d пересадки</item>
+    </plurals>
+
 </resources>

@@ -41,24 +41,25 @@ class FlightListAdapter @Inject constructor() :
             append(currentItem.trips.last().to)
         }
 
-        var minPrice = 0
-        val priceText = currentItem.prices.forEach {
-            if (it.amount > minPrice) {
+        var minPrice = currentItem.prices[0].amount
+        currentItem.prices.forEach {
+            if (it.amount < minPrice) {
                 minPrice = it.amount
             }
         }
+        val priceText = "От ${minPrice} р."
 
-        var transfersText = buildString {
+
+        val transfersText = buildString {
             if (currentItem.trips.size - 1 > 0) {
-                append(currentItem.trips.size - 1).append(" пересадок")
+                append(currentItem.trips.size - 1).append(" пересадка")
             } else {
                 append("Без пересадок")
             }
-
         }
 
         holder.destinationView.text = destinationText
-        holder.priceView.text = minPrice.toString()
+        holder.priceView.text = priceText
         holder.transferView.text = transfersText
 
         holder.cardView.setOnClickListener {
