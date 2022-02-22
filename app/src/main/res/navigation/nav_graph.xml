@@ -20,11 +20,14 @@
         android:label="fragment_flight_list"
         tools:layout="@layout/fragment_flight_list" >
         <action
-            android:id="@+id/action_flightListFragment_to_flightInfoFragment"
-            app:destination="@id/flightInfoFragment" />
-        <action
             android:id="@+id/action_flightListFragment_to_entryFragment"
             app:destination="@id/entryFragment" />
+        <action
+            android:id="@+id/action_flightListFragment_to_choiceDialogFragment"
+            app:destination="@id/choiceDialogFragment" />
+        <action
+            android:id="@+id/action_flightListFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/flightInfoFragment"
@@ -37,5 +40,22 @@
         <argument
             android:name="currentFlight"
             app:argType="com.example.onetwotriptest.model.Flight" />
+        <argument
+            android:name="chosenFlightType"
+            app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/choiceDialogFragment"
+        android:name="com.example.onetwotriptest.ui.ChoiceDialogFragment"
+        android:label="ChoiceDialogFragment" >
+        <action
+            android:id="@+id/action_choiceDialogFragment_to_flightListFragment"
+            app:destination="@id/flightListFragment" />
+        <action
+            android:id="@+id/action_choiceDialogFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+        <argument
+            android:name="currentFlight"
+            app:argType="com.example.onetwotriptest.model.Flight" />
+    </dialog>
 </navigation>

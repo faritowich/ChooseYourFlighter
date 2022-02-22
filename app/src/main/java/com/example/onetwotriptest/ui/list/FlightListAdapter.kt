@@ -63,9 +63,20 @@ class FlightListAdapter @Inject constructor() :
         holder.transferView.text = transfersText
 
         holder.cardView.setOnClickListener {
-            val action =
-                FlightListFragmentDirections.actionFlightListFragmentToFlightInfoFragment(currentItem)
-            holder.itemView.findNavController().navigate(action)
+            if (currentItem.prices.size > 1) {
+                val action =
+                    FlightListFragmentDirections.actionFlightListFragmentToChoiceDialogFragment(currentItem)
+                holder.itemView.findNavController().navigate(action)
+            } else {
+                val action =
+                    FlightListFragmentDirections.actionFlightListFragmentToFlightInfoFragment(
+                        currentItem,
+                        currentItem.prices[0].type
+                    )
+                holder.itemView.findNavController().navigate(action)
+
+            }
+
         }
     }
 

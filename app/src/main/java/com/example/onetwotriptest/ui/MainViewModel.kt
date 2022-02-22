@@ -16,6 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val repository: FlightRepository) : ViewModel() {
 
+    val chosenFlightType = MutableLiveData<Int>()
+//    val chosenFlightType: LiveData<Int> = _chosenFlightType
 
     private val _flightList = MutableLiveData<Response<List<Flight>>>()
     val flightList: LiveData<Response<List<Flight>>> = _flightList
