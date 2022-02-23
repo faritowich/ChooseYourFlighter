@@ -9,6 +9,7 @@
     <string name="one_transfer">1 пересадка</string>
     <string name="price_9999_ru">От 9999 р.</string>
     <string name="transfers">Пересадки:</string>
+    <string name="buy_ticket">Купить билет</string>
     <plurals name="transers">
         <item quantity="one">%d пересадка</item>
         <item quantity="other">%d пересадки</item>
