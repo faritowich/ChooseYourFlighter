@@ -7,11 +7,4 @@
         <item quantity="one">%d пересадка</item>
         <item quantity="other">%d пересадки</item>
     </plurals>
-
-    <array
-        name="choice_array">
-        <item>Эконом</item>
-        <item>Бизнес</item>
-    </array>
-
 </resources>

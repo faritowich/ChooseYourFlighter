@@ -42,7 +42,7 @@
             app:argType="com.example.onetwotriptest.model.Flight" />
         <argument
             android:name="chosenFlightType"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <dialog
         android:id="@+id/choiceDialogFragment"

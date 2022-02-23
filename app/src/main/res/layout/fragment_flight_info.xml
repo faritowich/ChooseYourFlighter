@@ -50,6 +50,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/transfers_header_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Пересадки:">
+
+                </TextView>
+
             </LinearLayout>
 
 
@@ -62,8 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="9999 р."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/purchase_button"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/race_container">
 
         </TextView>
@@ -74,9 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Купить билет"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/race_container">
+            app:layout_constraintTop_toBottomOf="@+id/price_text_view">
 
         </Button>
 

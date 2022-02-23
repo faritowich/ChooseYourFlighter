@@ -71,7 +71,7 @@ class FlightListAdapter @Inject constructor() :
                 val action =
                     FlightListFragmentDirections.actionFlightListFragmentToFlightInfoFragment(
                         currentItem,
-                        currentItem.prices[0].type
+                        0
                     )
                 holder.itemView.findNavController().navigate(action)
 

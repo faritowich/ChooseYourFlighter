@@ -18,7 +18,6 @@ class FlightInfoFragment : Fragment() {
 
     lateinit var binding: FragmentFlightInfoBinding
     private val args by navArgs<FlightInfoFragmentArgs>()
-    private val sharedViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,25 +47,7 @@ class FlightInfoFragment : Fragment() {
     }
 
     fun getPriceText(): String {
-
-        var price = 0
-        for (flightType in args.currentFlight.prices){
-            if (args.chosenFlightType == "Эконом") {
-                if (flightType.type == "economy") {
-                    price = flightType.amount
-                }
-            } else if (args.chosenFlightType == "Бизнес") {
-                if (flightType.type == "bussiness") {
-                    price = flightType.amount
-                }
-            }
-        }
-
-        return if (args.currentFlight.prices.size > 1) {
-            "Цена билета ${args.chosenFlightType.lowercase()}-класса: ${price} р."
-        } else {
-            "Цена билета ${args.chosenFlightType.lowercase()}-класса: ${args.currentFlight.prices[0].amount} р."
-        }
+        return "Цена билета ${args.currentFlight.prices[args.chosenFlightType].type}-класса: ${args.currentFlight.prices[args.chosenFlightType].amount} р."
     }
 
     fun getTransferText(flightNumber: Int): String {
