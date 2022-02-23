@@ -1,9 +1,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
-    android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
@@ -14,20 +12,49 @@
     card_view:cardElevation="4dp">
 
     <LinearLayout
+        android:padding="@dimen/rv_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/rv"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/destination_text_view"
-            style="@style/CardView.TextView"
+            android:id="@+id/departure_header_text_view"
+            style="@style/headers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginBottom="@dimen/interstring_margin"
-            android:padding="@dimen/standard_padding"
-            android:text="Sheremetyevo -> John Kennedy  Airport"
+            android:paddingBottom="@dimen/standard_padding"
+            android:text="@string/departure"
             android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/departure_text_view"
+            style="@style/airports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:paddingBottom="@dimen/standard_padding"
+            android:text="@string/sheremetyevo" />
+
+        <TextView
+            android:id="@+id/arrival_header_text_view"
+            style="@style/headers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:paddingVertical="@dimen/standard_padding"
+            android:text="@string/arrival_text"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/arrival_text_view"
+            style="@style/airports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:paddingBottom="@dimen/standard_padding"
+            android:text="@string/john_kennedy_airport" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,25 +63,23 @@
 
             <TextView
                 android:id="@+id/transfers_text_view"
-                style="@style/CardView.TextView"
+                style="@style/transfers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:padding="@dimen/standard_padding"
-                android:text="1 transfer"
-                android:textAllCaps="true" />
+                android:paddingBottom="@dimen/standard_padding"
+                android:text="@string/one_transfer" />
 
             <TextView
                 android:id="@+id/price_text_view"
-                style="@style/CardView.TextView"
+                style="@style/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:padding="@dimen/standard_padding"
-                android:text="От 9999 р."
-                android:textAllCaps="true" />
+                android:text="@string/price_9999_ru" />
 
         </LinearLayout>
 

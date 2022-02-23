@@ -3,15 +3,13 @@ package com.example.onetwotriptest.ui.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.model.Flight
+import com.example.onetwotriptest.util.Constants
 import javax.inject.Inject
 
 class FlightListAdapter @Inject constructor() :
@@ -20,7 +18,8 @@ class FlightListAdapter @Inject constructor() :
     private var flightList = emptyList<Flight>()
 
     class FlightListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val destinationView: TextView = view.findViewById(R.id.destination_text_view)
+        val departureView: TextView = view.findViewById(R.id.departure_text_view)
+        val arrivalView: TextView = view.findViewById(R.id.arrival_text_view)
         val transferView: TextView = view.findViewById(R.id.transfers_text_view)
         val priceView: TextView = view.findViewById(R.id.price_text_view)
         val cardView: CardView = view.findViewById(R.id.card_view)
@@ -34,12 +33,6 @@ class FlightListAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: FlightListViewHolder, position: Int) {
         val currentItem = flightList[position]
-
-        val destinationText = buildString {
-            append(currentItem.trips[0].from)
-            append(" -> ")
-            append(currentItem.trips.last().to)
-        }
 
         var minPrice = currentItem.prices[0].amount
         currentItem.prices.forEach {
@@ -58,7 +51,8 @@ class FlightListAdapter @Inject constructor() :
             }
         }
 
-        holder.destinationView.text = destinationText
+        holder.departureView.text = Constants.handleAirportName(currentItem.trips[0].from)
+        holder.arrivalView.text = Constants.handleAirportName(currentItem.trips[0].to)
         holder.priceView.text = priceText
         holder.transferView.text = transfersText
 

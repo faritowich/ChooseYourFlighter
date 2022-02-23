@@ -2,6 +2,14 @@
     <string name="app_name">OneTwoTripTest</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_ticket">Выбрать билет</string>
+    <string name="arrival_text">Прибытие:</string>
+    <string name="departure">Вылет:</string>
+    <string name="sheremetyevo">Sheremetyevo</string>
+    <string name="john_kennedy_airport">John Kennedy Airport</string>
+    <string name="one_transfer">1 пересадка</string>
+    <string name="price_9999_ru">От 9999 р.</string>
+    <string name="transfers">Пересадки:</string>
 
     <plurals name="transers">
         <item quantity="one">%d пересадка</item>
