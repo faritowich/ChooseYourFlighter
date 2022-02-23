@@ -13,7 +13,7 @@ import com.example.onetwotriptest.util.Constants
 
 class FlightInfoFragment : Fragment() {
 
-    lateinit var binding: FragmentFlightInfoBinding
+    private lateinit var binding: FragmentFlightInfoBinding
     private val args by navArgs<FlightInfoFragmentArgs>()
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class FlightInfoFragment : Fragment() {
         binding = FragmentFlightInfoBinding.inflate(inflater, container, false)
 
         binding.fromTextview.text = Constants.handleAirportName(args.currentFlight.trips[0].from)
-        binding.toTextview.text = Constants.handleAirportName(args.currentFlight.trips[0].to)
+        binding.toTextview.text = Constants.handleAirportName(args.currentFlight.trips.last().to)
         binding.priceTextView.text = getPriceText()
 
         for (transferNumber in 0..args.currentFlight.trips.size - 1) {
@@ -40,7 +40,7 @@ class FlightInfoFragment : Fragment() {
         return binding.root
     }
 
-    fun getPriceText(): String {
+    private fun getPriceText(): String {
         val flightTypeName = when (args.currentFlight.prices[args.chosenFlightType].type) {
             "economy" -> "эконом"
             "bussiness" -> "бизнес"
@@ -49,7 +49,7 @@ class FlightInfoFragment : Fragment() {
         return "Цена (${flightTypeName}-класс): ${args.currentFlight.prices[args.chosenFlightType].amount} р."
     }
 
-    fun getTransferText(flightNumber: Int): String {
+    private fun getTransferText(flightNumber: Int): String {
 
         return buildString {
             if (args.currentFlight.trips.size - 1 > 0) {

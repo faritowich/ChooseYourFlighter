@@ -59,7 +59,7 @@ class FlightListFragment : Fragment() {
         })
     }
 
-    fun setRecyclerView() {
+    private fun setRecyclerView() {
         adapter = FlightListAdapter()
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

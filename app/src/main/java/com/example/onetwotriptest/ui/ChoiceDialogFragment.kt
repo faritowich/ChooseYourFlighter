@@ -47,7 +47,7 @@ class ChoiceDialogFragment : DialogFragment() {
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
-    private fun getFlightTypes(): Array<String>? {
+    private fun getFlightTypes(): Array<String> {
         val flightTypeList = mutableListOf<String>()
         for (type in args.currentFlight.prices) {
             flightTypeList.add(buildString {

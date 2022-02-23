@@ -51,7 +51,7 @@ class FlightListAdapter @Inject constructor() :
         }
 
         holder.departureView.text = Constants.handleAirportName(currentItem.trips[0].from)
-        holder.arrivalView.text = Constants.handleAirportName(currentItem.trips[0].to)
+        holder.arrivalView.text = Constants.handleAirportName(currentItem.trips.last().to)
         holder.priceView.text = priceText
         holder.transferView.text = transfersText
 
