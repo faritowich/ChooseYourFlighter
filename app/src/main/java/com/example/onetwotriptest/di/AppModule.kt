@@ -2,7 +2,6 @@ package com.example.onetwotriptest.di
 
 import com.example.onetwotriptest.data.network.FlightsApi
 import com.example.onetwotriptest.repositories.FlightRepository
-import com.example.onetwotriptest.repositories.Repository
 import com.example.onetwotriptest.util.Constants
 import dagger.Module
 import dagger.Provides

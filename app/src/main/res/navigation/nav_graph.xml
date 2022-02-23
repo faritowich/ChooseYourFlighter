@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/entryFragment"
         android:name="com.example.onetwotriptest.ui.EntryFragment"
-        android:label="fragment_entry"
+        android:label="Главное меню"
         tools:layout="@layout/fragment_entry" >
         <action
             android:id="@+id/action_entryFragment_to_flightListFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/flightListFragment"
         android:name="com.example.onetwotriptest.ui.list.FlightListFragment"
-        android:label="fragment_flight_list"
+        android:label="Список авиарейсов"
         tools:layout="@layout/fragment_flight_list" >
         <action
             android:id="@+id/action_flightListFragment_to_entryFragment"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/flightInfoFragment"
         android:name="com.example.onetwotriptest.ui.FlightInfoFragment"
-        android:label="fragment_flight_info"
+        android:label="Информация о рейсе"
         tools:layout="@layout/fragment_flight_info" >
         <action
             android:id="@+id/action_flightInfoFragment_to_flightListFragment"

@@ -42,7 +42,6 @@ class FlightListAdapter @Inject constructor() :
         }
         val priceText = "От ${minPrice} р."
 
-
         val transfersText = buildString {
             if (currentItem.trips.size - 1 > 0) {
                 append(currentItem.trips.size - 1).append(" пересадка")
@@ -68,9 +67,7 @@ class FlightListAdapter @Inject constructor() :
                         0
                     )
                 holder.itemView.findNavController().navigate(action)
-
             }
-
         }
     }
 

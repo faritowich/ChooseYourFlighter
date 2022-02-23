@@ -1,20 +1,15 @@
 package com.example.onetwotriptest.ui
 
 import android.os.Bundle
-import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.databinding.FragmentFlightInfoBinding
-import com.example.onetwotriptest.databinding.FragmentFlightListBinding
 import com.example.onetwotriptest.util.Constants
-import dagger.hilt.android.AndroidEntryPoint
 
 class FlightInfoFragment : Fragment() {
 
@@ -33,12 +28,12 @@ class FlightInfoFragment : Fragment() {
 
         for (transferNumber in 0..args.currentFlight.trips.size - 1) {
             if (args.currentFlight.trips.size > 1) {
-                val newHeaderTextView = TextView(requireContext(),null, R.style.headers)
-                val headerText =  "Рейс ${transferNumber + 1}"
+                val newHeaderTextView = TextView(requireContext(), null, R.style.headers)
+                val headerText = "Рейс ${transferNumber + 1}"
                 newHeaderTextView.text = headerText
                 binding.transfersContainer.addView(newHeaderTextView)
             }
-            val newTextView = TextView(requireContext(),null, R.style.transfers)
+            val newTextView = TextView(requireContext(), null, R.style.transfers)
             newTextView.text = getTransferText(transferNumber)
             binding.transfersContainer.addView(newTextView)
         }

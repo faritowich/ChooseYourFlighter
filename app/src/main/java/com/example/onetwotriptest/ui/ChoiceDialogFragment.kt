@@ -14,11 +14,8 @@ class ChoiceDialogFragment : DialogFragment() {
     private val args by navArgs<ChoiceDialogFragmentArgs>()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
-
         return activity?.let {
             val arr = getFlightTypes()
-//            val arr = arrayOf<String>("S","P")
             var chosenRadioButtonType: Int? = null
             val builder = AlertDialog.Builder(it)
             builder.setTitle("Выберите класс перелета")

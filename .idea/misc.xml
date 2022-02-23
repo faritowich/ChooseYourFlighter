@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/drawable/ic_broken_image.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/drawable/ic_connection_error.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/layout/activity_main.xml" value="0.30520833333333336" />
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/layout/fragment_entry.xml" value="0.30520833333333336" />
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/layout/fragment_flight_info.xml" value="0.30520833333333336" />
+        <entry key="..\:/Users/Azat/AndroidStudioProjects/ChooseYourFlighter/app/src/main/res/layout/fragment_flight_list.xml" value="0.33" />
         <entry key="..\:/Users/Azat/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/Azat/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_entry.xml" value="0.1" />
         <entry key="..\:/Users/Azat/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_flight_info.xml" value="0.30520833333333336" />
