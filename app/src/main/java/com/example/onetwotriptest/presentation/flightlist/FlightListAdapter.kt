@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.ui.list
+package com.example.onetwotriptest.presentation.flightlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +8,10 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onetwotriptest.R
-import com.example.onetwotriptest.model.Flight
-import com.example.onetwotriptest.util.Constants
-import javax.inject.Inject
+import com.example.onetwotriptest.data.network.model.Flight
+import com.example.onetwotriptest.presentation.core.HandleAirportName
 
-class FlightListAdapter @Inject constructor() :
+class FlightListAdapter:
     RecyclerView.Adapter<FlightListAdapter.FlightListViewHolder>() {
 
     private var flightList = emptyList<Flight>()
@@ -50,15 +49,17 @@ class FlightListAdapter @Inject constructor() :
             }
         }
 
-        holder.departureView.text = Constants.handleAirportName(currentItem.trips[0].from)
-        holder.arrivalView.text = Constants.handleAirportName(currentItem.trips.last().to)
+        holder.departureView.text = HandleAirportName.handleAirportName(currentItem.trips[0].from)
+        holder.arrivalView.text = HandleAirportName.handleAirportName(currentItem.trips.last().to)
         holder.priceView.text = priceText
         holder.transferView.text = transfersText
 
         holder.cardView.setOnClickListener {
             if (currentItem.prices.size > 1) {
                 val action =
-                    FlightListFragmentDirections.actionFlightListFragmentToChoiceDialogFragment(currentItem)
+                    FlightListFragmentDirections.actionFlightListFragmentToChoiceDialogFragment(
+                        currentItem
+                    )
                 holder.itemView.findNavController().navigate(action)
             } else {
                 val action =

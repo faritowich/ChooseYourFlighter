@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.ui
+package com.example.onetwotriptest.presentation.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,21 +9,21 @@ import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.databinding.FragmentFlightInfoBinding
-import com.example.onetwotriptest.util.Constants
+import com.example.onetwotriptest.presentation.core.HandleAirportName
 
 class FlightInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentFlightInfoBinding
     private val args by navArgs<FlightInfoFragmentArgs>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFlightInfoBinding.inflate(inflater, container, false)
-
-        binding.fromTextview.text = Constants.handleAirportName(args.currentFlight.trips[0].from)
-        binding.toTextview.text = Constants.handleAirportName(args.currentFlight.trips.last().to)
+        binding.fromTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips[0].from)
+        binding.toTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips.last().to)
         binding.priceTextView.text = getPriceText()
 
         for (transferNumber in 0..args.currentFlight.trips.size - 1) {
@@ -54,9 +54,9 @@ class FlightInfoFragment : Fragment() {
         return buildString {
             if (args.currentFlight.trips.size - 1 > 0) {
                 append("Вылет:\n")
-                append(Constants.handleAirportName(args.currentFlight.trips[flightNumber].from))
+                append(HandleAirportName.handleAirportName(args.currentFlight.trips[flightNumber].from))
                 append("\nПрибытие:\n")
-                append(Constants.handleAirportName(args.currentFlight.trips[flightNumber].to))
+                append(HandleAirportName.handleAirportName(args.currentFlight.trips[flightNumber].to))
             } else {
                 append("Без пересадок")
             }

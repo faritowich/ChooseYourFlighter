@@ -16,7 +16,7 @@
     card_view:cardElevation="4dp"
     card_view:cardPreventCornerOverlap="true"
     card_view:cardUseCompatPadding="true"
-    tools:context=".ui.FlightInfoFragment">
+    tools:context=".presentation.details.FlightInfoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

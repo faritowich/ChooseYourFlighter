@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/entryFragment"
-        android:name="com.example.onetwotriptest.ui.EntryFragment"
+        android:name="com.example.onetwotriptest.presentation.entry.EntryFragment"
         android:label="Главное меню"
         tools:layout="@layout/fragment_entry" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/flightListFragment"
-        android:name="com.example.onetwotriptest.ui.list.FlightListFragment"
+        android:name="com.example.onetwotriptest.presentation.flightlist.FlightListFragment"
         android:label="Список авиарейсов"
         tools:layout="@layout/fragment_flight_list" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/flightInfoFragment"
-        android:name="com.example.onetwotriptest.ui.FlightInfoFragment"
+        android:name="com.example.onetwotriptest.presentation.details.FlightInfoFragment"
         android:label="Информация о рейсе"
         tools:layout="@layout/fragment_flight_info" >
         <action
@@ -39,14 +39,14 @@
             app:destination="@id/flightListFragment" />
         <argument
             android:name="currentFlight"
-            app:argType="com.example.onetwotriptest.model.Flight" />
+            app:argType="com.example.onetwotriptest.data.network.model.Flight" />
         <argument
             android:name="chosenFlightType"
             app:argType="integer" />
     </fragment>
     <dialog
         android:id="@+id/choiceDialogFragment"
-        android:name="com.example.onetwotriptest.ui.ChoiceDialogFragment"
+        android:name="com.example.onetwotriptest.presentation.types.ChoiceDialogFragment"
         android:label="ChoiceDialogFragment" >
         <action
             android:id="@+id/action_choiceDialogFragment_to_flightListFragment"
@@ -56,6 +56,6 @@
             app:destination="@id/flightInfoFragment" />
         <argument
             android:name="currentFlight"
-            app:argType="com.example.onetwotriptest.model.Flight" />
+            app:argType="com.example.onetwotriptest.data.network.model.Flight" />
     </dialog>
 </navigation>

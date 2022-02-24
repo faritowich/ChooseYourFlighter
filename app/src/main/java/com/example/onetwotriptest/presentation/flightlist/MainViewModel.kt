@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.onetwotriptest.model.Flight
-import com.example.onetwotriptest.repositories.FlightRepository
+import com.example.onetwotriptest.data.network.model.Flight
+import com.example.onetwotriptest.domain.FlightRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response

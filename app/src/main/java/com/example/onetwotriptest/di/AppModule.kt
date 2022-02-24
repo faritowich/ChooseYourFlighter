@@ -1,8 +1,7 @@
 package com.example.onetwotriptest.di
 
 import com.example.onetwotriptest.data.network.FlightsApi
-import com.example.onetwotriptest.repositories.FlightRepository
-import com.example.onetwotriptest.util.Constants
+import com.example.onetwotriptest.domain.FlightRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +15,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+    private const val BASE_URL = "https://603e34c648171b0017b2ec55.mockapi.io/ott/"
 
     @Singleton
     @Provides
@@ -36,7 +36,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(Constants.BASE_URL)
+        .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
 

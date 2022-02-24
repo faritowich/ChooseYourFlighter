@@ -1,8 +1,6 @@
-package com.example.onetwotriptest.repositories
+package com.example.onetwotriptest.domain
 
 import com.example.onetwotriptest.data.network.FlightsApi
-import com.example.onetwotriptest.model.Flight
-import retrofit2.Response
 
 
 class FlightRepository(private val api: FlightsApi) : Repository {

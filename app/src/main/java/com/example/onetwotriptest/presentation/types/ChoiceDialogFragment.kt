@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.ui
+package com.example.onetwotriptest.presentation.types
 
 import android.app.Dialog
 import android.os.Bundle
@@ -29,10 +29,10 @@ class ChoiceDialogFragment : DialogFragment() {
                 ) { dialog, id ->
                     if (chosenRadioButtonType != null) {
                         val action =
-                            ChoiceDialogFragmentDirections
-                                .actionChoiceDialogFragmentToFlightInfoFragment(args.currentFlight,
-                                    chosenRadioButtonType!!
-                                )
+                            ChoiceDialogFragmentDirections.actionChoiceDialogFragmentToFlightInfoFragment(
+                                args.currentFlight,
+                                chosenRadioButtonType!!
+                            )
                         findNavController().navigate(action)
                     } else {
                         Toast.makeText(requireContext(), "Выберите класс перелёта", Toast.LENGTH_SHORT).show()

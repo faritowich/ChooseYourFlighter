@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.ui
+package com.example.onetwotriptest.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
