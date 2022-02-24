@@ -37,9 +37,7 @@ class FlightListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.flightList.observe(this, Observer { response ->
-            if (response.isSuccessful) {
-                response.body()?.let { adapter.setData(it) }
-            }
+            response.body()?.let { adapter.setData(it) }
         })
 
         viewModel.status.observe(this, Observer {

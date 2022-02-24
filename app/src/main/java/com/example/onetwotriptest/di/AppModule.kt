@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import com.example.onetwotriptest.domain.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,13 +22,13 @@ object AppModule {
     @Provides
     fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
         .apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = okhttp3.logging.HttpLoggingInterceptor.Level.BODY
         }
 
     @Singleton
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient
+        okhttp3.OkHttpClient
             .Builder()
             .addInterceptor(httpLoggingInterceptor)
             .build()
@@ -35,16 +36,17 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): FlightsApi = retrofit.create(FlightsApi::class.java)
+    fun provideApiService(retrofit: Retrofit): FlightsApi =
+        retrofit.create(com.example.onetwotriptest.data.network.FlightsApi::class.java)
 
     @Singleton
     @Provides
-    fun providesRepository(apiService: FlightsApi) = FlightRepository(apiService)
+    fun providesRepository(apiService: FlightsApi) = FlightRepository(apiService) as Repository
 }
