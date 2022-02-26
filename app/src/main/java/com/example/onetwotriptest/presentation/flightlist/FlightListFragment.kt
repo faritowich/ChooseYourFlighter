@@ -11,30 +11,25 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onetwotriptest.databinding.FragmentFlightListBinding
+import com.example.onetwotriptest.presentation.BaseFragment
 import com.example.onetwotriptest.ui.FlightApiStatus
 import com.example.onetwotriptest.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlightListFragment : Fragment() {
+class FlightListFragment : BaseFragment<FragmentFlightListBinding>(
+    FragmentFlightListBinding::inflate
+) {
 
     private val viewModel: MainViewModel by viewModels()
-    lateinit var binding: FragmentFlightListBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: FlightListAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFlightListBinding.inflate(inflater, container, false)
-        setRecyclerView()
-        viewModel.getFlightList()
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setRecyclerView()
+        viewModel.getFlightList()
 
         viewModel.flightList.observe(this, Observer { response ->
             response.body()?.let { adapter.setData(it) }

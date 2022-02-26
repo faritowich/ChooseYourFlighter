@@ -9,22 +9,23 @@ import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.databinding.FragmentFlightInfoBinding
+import com.example.onetwotriptest.presentation.BaseFragment
 import com.example.onetwotriptest.presentation.core.HandleAirportName
 
-class FlightInfoFragment : Fragment() {
+class FlightInfoFragment : BaseFragment<FragmentFlightInfoBinding>(
+    FragmentFlightInfoBinding::inflate
+) {
 
-    private lateinit var binding: FragmentFlightInfoBinding
     private val args by navArgs<FlightInfoFragmentArgs>()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFlightInfoBinding.inflate(inflater, container, false)
-        binding.fromTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips[0].from)
-        binding.toTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips.last().to)
-        binding.priceTextView.text = getPriceText()
+        binding.apply {
+            fromTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips[0].from)
+            toTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips.last().to)
+            priceTextView.text = getPriceText()
+        }
 
         for (transferNumber in 0..args.currentFlight.trips.size - 1) {
             if (args.currentFlight.trips.size > 1) {
@@ -37,7 +38,6 @@ class FlightInfoFragment : Fragment() {
             newTextView.text = getTransferText(transferNumber)
             binding.transfersContainer.addView(newTextView)
         }
-        return binding.root
     }
 
     private fun getPriceText(): String {
@@ -63,3 +63,4 @@ class FlightInfoFragment : Fragment() {
         }
     }
 }
+

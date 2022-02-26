@@ -8,19 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.databinding.FragmentEntryBinding
+import com.example.onetwotriptest.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EntryFragment : Fragment() {
-    lateinit var binding: FragmentEntryBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEntryBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class EntryFragment : BaseFragment<FragmentEntryBinding>(
+    FragmentEntryBinding::inflate
+) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
