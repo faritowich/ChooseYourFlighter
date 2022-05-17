@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.di
+package com.example.onetwotriptest
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

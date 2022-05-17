@@ -1,16 +1,14 @@
 package com.example.onetwotriptest.presentation.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.example.onetwotriptest.R
 import com.example.onetwotriptest.databinding.FragmentFlightInfoBinding
 import com.example.onetwotriptest.presentation.BaseFragment
-import com.example.onetwotriptest.presentation.core.HandleAirportName
+import com.example.onetwotriptest.presentation.utils.HandleAirportName
+import com.example.onetwotriptest.presentation.utils.handleAirportName
 
 class FlightInfoFragment : BaseFragment<FragmentFlightInfoBinding>(
     FragmentFlightInfoBinding::inflate
@@ -22,8 +20,8 @@ class FlightInfoFragment : BaseFragment<FragmentFlightInfoBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            fromTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips[0].from)
-            toTextview.text = HandleAirportName.handleAirportName(args.currentFlight.trips.last().to)
+            fromTextview.text = args.currentFlight.trips[0].from.handleAirportName()
+            toTextview.text = args.currentFlight.trips.last().to.handleAirportName()
             priceTextView.text = getPriceText()
         }
 
@@ -54,9 +52,9 @@ class FlightInfoFragment : BaseFragment<FragmentFlightInfoBinding>(
         return buildString {
             if (args.currentFlight.trips.size - 1 > 0) {
                 append("Вылет:\n")
-                append(HandleAirportName.handleAirportName(args.currentFlight.trips[flightNumber].from))
+                append(args.currentFlight.trips[flightNumber].from.handleAirportName())
                 append("\nПрибытие:\n")
-                append(HandleAirportName.handleAirportName(args.currentFlight.trips[flightNumber].to))
+                append(args.currentFlight.trips[flightNumber].to.handleAirportName())
             } else {
                 append("Без пересадок")
             }

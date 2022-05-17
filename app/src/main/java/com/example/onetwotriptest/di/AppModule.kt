@@ -2,15 +2,15 @@ package com.example.onetwotriptest.di
 
 import com.example.onetwotriptest.data.network.FlightsApi
 import com.example.onetwotriptest.domain.FlightRepository
+import com.example.onetwotriptest.domain.FlightRepositoryImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.example.onetwotriptest.domain.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -48,5 +48,15 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesRepository(apiService: FlightsApi) = FlightRepository(apiService) as Repository
+    fun providesRepository(apiService: FlightsApi): FlightRepositoryImpl{
+        return FlightRepositoryImpl(apiService)
+    }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+    @Binds
+    @Singleton
+    abstract fun FlightRepositoryImpl.bindRepo(): FlightRepository
 }

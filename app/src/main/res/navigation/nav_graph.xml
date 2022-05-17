@@ -39,7 +39,7 @@
             app:destination="@id/flightListFragment" />
         <argument
             android:name="currentFlight"
-            app:argType="com.example.onetwotriptest.data.network.model.Flight" />
+            app:argType="com.example.onetwotriptest.data.model.Flight" />
         <argument
             android:name="chosenFlightType"
             app:argType="integer" />
@@ -56,6 +56,6 @@
             app:destination="@id/flightInfoFragment" />
         <argument
             android:name="currentFlight"
-            app:argType="com.example.onetwotriptest.data.network.model.Flight" />
+            app:argType="com.example.onetwotriptest.data.model.Flight" />
     </dialog>
 </navigation>

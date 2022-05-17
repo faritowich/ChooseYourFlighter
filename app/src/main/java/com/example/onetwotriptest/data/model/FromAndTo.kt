@@ -1,4 +1,4 @@
-package com.example.onetwotriptest.data.network.model
+package com.example.onetwotriptest.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

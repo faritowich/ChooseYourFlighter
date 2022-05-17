@@ -1,32 +1,34 @@
 package com.example.onetwotriptest.presentation.flightlist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.onetwotriptest.R
-import com.example.onetwotriptest.data.network.model.Flight
-import com.example.onetwotriptest.presentation.core.HandleAirportName
+import com.example.onetwotriptest.data.model.Flight
+import com.example.onetwotriptest.databinding.ListViewItemBinding
+import com.example.onetwotriptest.presentation.utils.HandleAirportName
+import com.example.onetwotriptest.presentation.utils.handleAirportName
+import kotlinx.coroutines.handleCoroutineException
 
 class FlightListAdapter:
     RecyclerView.Adapter<FlightListAdapter.FlightListViewHolder>() {
 
     private var flightList = emptyList<Flight>()
 
-    class FlightListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val departureView: TextView = view.findViewById(R.id.departure_text_view)
-        val arrivalView: TextView = view.findViewById(R.id.arrival_text_view)
-        val transferView: TextView = view.findViewById(R.id.transfers_text_view)
-        val priceView: TextView = view.findViewById(R.id.price_text_view)
-        val cardView: CardView = view.findViewById(R.id.card_view)
+    class FlightListViewHolder(binding: ListViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val departureView: TextView = binding.departureTextView
+        val arrivalView: TextView = binding.arrivalTextView
+        val transferView: TextView = binding.transfersTextView
+        val priceView: TextView = binding.priceTextView
+        val cardView: CardView = binding.cardView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightListViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         return FlightListViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.list_view_item, parent, false)
+            ListViewItemBinding.inflate(inflater, parent, false)
         )
     }
 
@@ -49,17 +51,18 @@ class FlightListAdapter:
             }
         }
 
-        holder.departureView.text = HandleAirportName.handleAirportName(currentItem.trips[0].from)
-        holder.arrivalView.text = HandleAirportName.handleAirportName(currentItem.trips.last().to)
-        holder.priceView.text = priceText
-        holder.transferView.text = transfersText
+        holder.apply {
+            departureView.text = currentItem.trips[0].from.handleAirportName()
+            arrivalView.text = currentItem.trips.last().to.handleAirportName()
+            priceView.text = priceText
+            transferView.text = transfersText
+        }
 
         holder.cardView.setOnClickListener {
             if (currentItem.prices.size > 1) {
                 val action =
-                    FlightListFragmentDirections.actionFlightListFragmentToChoiceDialogFragment(
-                        currentItem
-                    )
+                    FlightListFragmentDirections.actionFlightListFragmentToChoiceDialogFragment(currentItem)
+
                 holder.itemView.findNavController().navigate(action)
             } else {
                 val action =

@@ -25,17 +25,26 @@ class FlightListFragment : BaseFragment<FragmentFlightListBinding>(
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: FlightListAdapter
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewModel.getFlightList()
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setRecyclerView()
-        viewModel.getFlightList()
 
-        viewModel.flightList.observe(this, Observer { response ->
+        setRecyclerView()
+
+        viewModel.flightList.observe(viewLifecycleOwner, Observer { response ->
             response.body()?.let { adapter.setData(it) }
         })
 
-        viewModel.status.observe(this, Observer {
+        viewModel.status.observe(viewLifecycleOwner, Observer {
             when (it) {
                 FlightApiStatus.ERROR -> {
                     binding.icConnectionErrorImage.visibility = View.VISIBLE

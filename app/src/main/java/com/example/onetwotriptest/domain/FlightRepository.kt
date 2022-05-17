@@ -1,8 +1,8 @@
 package com.example.onetwotriptest.domain
 
-import com.example.onetwotriptest.data.network.FlightsApi
+import com.example.onetwotriptest.data.model.Flight
+import retrofit2.Response
 
-
-class FlightRepository(private val api: FlightsApi) : Repository {
-    override suspend fun getCountries() = api.getFlights()
+interface FlightRepository {
+    suspend fun getCountries(): Response<List<Flight>>
 }

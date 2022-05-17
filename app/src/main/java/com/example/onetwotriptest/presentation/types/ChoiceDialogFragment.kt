@@ -18,14 +18,14 @@ class ChoiceDialogFragment : DialogFragment() {
             val arr = getFlightTypes()
             var chosenRadioButtonType: Int? = null
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Выберите класс перелета")
+            builder.setTitle(R.string.choose_flight_class)
                 .setSingleChoiceItems(
                     arr, -1
                 ) { dialog, which ->
                     chosenRadioButtonType = which
                 }
                 .setPositiveButton(
-                    "Выбрать"
+                    R.string.choose
                 ) { dialog, id ->
                     if (chosenRadioButtonType != null) {
                         val action =
@@ -35,11 +35,11 @@ class ChoiceDialogFragment : DialogFragment() {
                             )
                         findNavController().navigate(action)
                     } else {
-                        Toast.makeText(requireContext(), "Выберите класс перелёта", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), R.string.choose_flight_class, Toast.LENGTH_SHORT).show()
                     }
                 }
                 .setNegativeButton(
-                    "Отмена"
+                    R.string.cancel
                 ) { dialog, id ->
                     findNavController().navigate(R.id.action_choiceDialogFragment_to_flightListFragment)
                 }
@@ -52,9 +52,9 @@ class ChoiceDialogFragment : DialogFragment() {
         for (type in args.currentFlight.prices) {
             flightTypeList.add(buildString {
                 if (type.type == "economy"){
-                    append("Эконом-класс")
+                    append(getString(R.string.economy_class))
                 } else if (type.type == "bussiness"){
-                    append("Бизнес-класс")
+                    append(getString(R.string.business_class))
                 }
                 append(": ")
                 append(type.amount)
