@@ -52,11 +52,3 @@ object AppModule {
         return FlightRepositoryImpl(apiService)
     }
 }
-
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
-    @Binds
-    @Singleton
-    abstract fun FlightRepositoryImpl.bindRepo(): FlightRepository
-}

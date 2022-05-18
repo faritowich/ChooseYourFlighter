@@ -14,7 +14,7 @@ import javax.inject.Inject
 enum class FlightApiStatus { LOADING, ERROR, DONE }
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val flightRepository: FlightRepository) : ViewModel() {
+class FlightsViewModel @Inject constructor(private val flightRepository: FlightRepository) : ViewModel() {
 
     private val _flightList = MutableLiveData<Response<List<Flight>>>()
     val flightList: LiveData<Response<List<Flight>>> = _flightList
@@ -22,9 +22,9 @@ class MainViewModel @Inject constructor(private val flightRepository: FlightRepo
     private val _status = MutableLiveData<FlightApiStatus>()
     val status: LiveData<FlightApiStatus> = _status
 
-//    init {
-//        getFlightList()
-//    }
+    init {
+        getFlightList()
+    }
 
     fun getFlightList() {
         viewModelScope.launch {

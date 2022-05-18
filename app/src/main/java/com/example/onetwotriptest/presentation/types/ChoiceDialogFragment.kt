@@ -35,7 +35,8 @@ class ChoiceDialogFragment : DialogFragment() {
                             )
                         findNavController().navigate(action)
                     } else {
-                        Toast.makeText(requireContext(), R.string.choose_flight_class, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), R.string.choose_flight_class, Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 .setNegativeButton(
@@ -51,14 +52,23 @@ class ChoiceDialogFragment : DialogFragment() {
         val flightTypeList = mutableListOf<String>()
         for (type in args.currentFlight.prices) {
             flightTypeList.add(buildString {
-                if (type.type == "economy"){
-                    append(getString(R.string.economy_class))
-                } else if (type.type == "bussiness"){
-                    append(getString(R.string.business_class))
+                if (type.type == "economy") {
+                    append(
+                        getString(
+                            R.string.flight_class_price,
+                            getString(R.string.economy_class),
+                            type.amount
+                        )
+                    )
+                } else if (type.type == "bussiness") {
+                    append(
+                        getString(
+                            R.string.flight_class_price,
+                            getString(R.string.business_class),
+                            type.amount
+                        )
+                    )
                 }
-                append(": ")
-                append(type.amount)
-                append(" р.")
             })
         }
         return flightTypeList.toTypedArray()
